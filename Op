@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kom naar de Bingo bingo van het ondernemend project van Theater havo/vwo. De opbrengst gaat naar Sunday Foundation.">
+  <title>Bingo | Ondernemend Project</title>
+  <style>
+    :root {
+      --ink: #111111;
+      --paper: #f8f7f4;
+      --white: #ffffff;
+      --accent: #f3c84b;
+      --muted: #66645f;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .topbar {
+      background: var(--ink);
+      color: var(--white);
+      padding: 14px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .topbar strong { letter-spacing: .12em; }
+    nav { display: flex; gap: 20px; flex-wrap: wrap; }
+    nav a { text-decoration: none; font-size: .92rem; }
+    nav a:hover { color: var(--accent); }
+    .hero {
+      padding: 64px 6% 76px;
+      text-align: center;
+      background: var(--white);
+    }
+    .logo {
+      width: min(540px, 90%);
+      height: auto;
+      display: block;
+      margin: 0 auto 24px;
+      mix-blend-mode: multiply;
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 5.6rem);
+      line-height: .98;
+      letter-spacing: -.06em;
+      margin: 14px auto 20px;
+      max-width: 850px;
+    }
+    .hero p {
+      max-width: 620px;
+      margin: 0 auto 28px;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: #454545;
+    }
+    .button {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--white);
+      padding: 14px 22px;
+      border-radius: 3px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .button:hover { transform: translateY(-2px); background: #333; }
+    .event-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: var(--accent);
+      padding: 24px 6%;
+      gap: 20px;
+      text-align: center;
+    }
+    .event-strip strong { display: block; font-size: 1.1rem; }
+    .event-strip span { font-size: .92rem; }
+    section { padding: 72px 6%; }
+    .section-inner { max-width: 1050px; margin: 0 auto; }
+    .section-label {
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    h2 {
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: -.045em;
+      margin: 10px 0 22px;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 36px;
+      align-items: start;
+    }
+    .note {
+      background: var(--ink);
+      color: var(--white);
+      padding: 28px;
+      border-radius: 6px;
+    }
+    .note h3 { font-size: 1.5rem; margin-top: 0; }
+    .note p { color: #e7e7e7; margin-bottom: 0; }
+    .prices { background: #efede7; }
+    .price-list { max-width: 760px; }
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+      border-bottom: 1px solid #cfccc4;
+      font-size: 1.05rem;
+    }
+    .price-row strong { text-align: right; }
+    .small { color: var(--muted); font-size: .9rem; }
+    .shifts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+    .shift {
+      border: 1px solid #d7d4cc;
+      background: var(--white);
+      padding: 26px;
+      border-radius: 6px;
+    }
+    .shift .number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--accent);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .shift h3 { margin: 0 0 4px; font-size: 1.35rem; }
+    .shift p { margin: 0; color: var(--muted); }
+    .location-box {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: center;
+      background: var(--white);
+      padding: 28px;
+      border: 1px solid #e2dfd8;
+      border-radius: 6px;
+      flex-wrap: wrap;
+    }
+    .address { font-size: 1.2rem; font-weight: 700; }
+    footer {
+      background: var(--ink);
+      color: var(--white);
+      padding: 32px 6%;
+      text-align: center;
+    }
+    footer p { margin: 5px 0; color: #d0d0d0; }
+    @media (max-width: 700px) {
+      .topbar { justify-content: center; }
+      nav { justify-content: center; gap: 13px; }
+      .hero { padding-top: 42px; }
+      .event-strip { grid-template-columns: 1fr; gap: 15px; }
+      .about-grid, .shifts { grid-template-columns: 1fr; }
+      section { padding: 54px 6%; }
+      .price-row { font-size: .98rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <strong>BINGO.</strong>
+    <nav aria-label="Hoofdnavigatie">
+      <a href="#over">Wie zijn wij?</a>
+      <a href="#prijzen">Prijzen</a>
+      <a href="#tijden">Wanneer?</a>
+      <a href="#locatie">Locatie</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="brand-logo" role="img" aria-label="Bingo, ondernemend project">
+        <div class="brand-lockup">
+          <span class="brand-word">BINGO</span>
+          <span class="bingo-ball" aria-hidden="true"><span>8</span></span>
+          <span class="brand-dot">.</span>
+        </div>
+        <div class="brand-subtitle">ONDERNEMEND PROJECT</div>
+      </div>
+      <div class="eyebrow">Theater havo/vwo presenteert</div>
+      <h1>Een avond vol bingo.</h1>
+      <p>Kom gezellig meespelen, maak kans op prijzen en steun tegelijk een goed doel. Iedereen is welkom!</p>
+      <a class="button" href="#tijden">Bekijk de tijden</a>
+    </section>
+
+    <div class="event-strip" aria-label="Evenementinformatie">
+      <div><strong>19 november</strong><span>De bingoavond</span></div>
+      <div><strong>2 shifts</strong><span>Kies het tijdstip dat past</span></div>
+      <div><strong>Voor Sunday Foundation</strong><span>Samen steunen we een goed doel</span></div>
+    </div>
+
+    <section id="over">
+      <div class="section-inner about-grid">
+        <div>
+          <div class="section-label">Over Bingo</div>
+          <h2>Wie zijn wij en wat doen we?</h2>
+          <p>Wij zijn leerlingen van Theater havo/vwo en organiseren de Bingo bingo als onderdeel van ons ondernemend project.</p>
+          <p>We organiseren een gezellige bingoavond waar je samen kunt spelen, iets lekkers kunt halen en hopelijk met een leuke prijs naar huis gaat.</p>
+          <p>Met dit project steunen we <strong>Sunday Foundation</strong>. Je kunt ook een vrijwillige donatie doen.</p>
+        </div>
+        <aside class="note">
+          <h3>Een gezellige avond met impact</h3>
+          <p>Kom met vrienden of familie, speel mee en help ons om geld op te halen voor Sunday Foundation.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="prices" id="prijzen">
+      <div class="section-inner">
+        <div class="section-label">Goed om te weten</div>
+        <h2>Wat kost het?</h2>
+        <div class="price-list">
+          <div class="price-row"><span>Entree</span><strong>€ 4,00</strong></div>
+          <div class="price-row"><span>Bingokaart</span><strong>€ 1,00 per kaart</strong></div>
+          <div class="price-row"><span>Eten</span><strong>Verschilt per product</strong></div>
+          <div class="price-row"><span>Donatie</span><strong>Vrijwillig</strong></div>
+        </div>
+        <p class="small">Neem eventueel wat extra mee als je eten of extra bingokaarten wilt kopen.</p>
+      </div>
+    </section>
+
+    <section id="tijden">
+      <div class="section-inner">
+        <div class="section-label">Zet het in je agenda</div>
+        <h2>Wanneer is de bingo?</h2>
+        <p>Op <strong>19 november</strong> organiseren we twee shifts. Kies de tijd die jou het beste uitkomt.</p>
+        <div class="shifts">
+          <article class="shift">
+            <div class="number">1</div>
+            <h3>Eerste shift</h3>
+            <p>17:00 – 18:30</p>
+          </article>
+          <article class="shift">
+            <div class="number">2</div>
+            <h3>Tweede shift</h3>
+            <p>19:00 – 20:30</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="locatie">
+      <div class="section-inner">
+        <div class="section-label">Waar moet je zijn?</div>
+        <h2>De locatie</h2>
+        <div class="location-box">
+          <div>
+            <div class="address">Hauenstraat 95D<br>3024 SH</div>
+            <p class="small">Controleer voor vertrek eventueel de route en het volledige adres.</p>
+          </div>
+          <a class="button" href="https://www.google.com/maps/search/?api=1&query=Hauenstraat%2095D%2C%203024%20SH" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Bingo | Ondernemend Project</strong>
+    <p>Georganiseerd door Theater havo/vwo</p>
+    <p>Voor Sunday Foundation</p>
+  </footer>
+</body>
+</html>
